@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Collection</title>
+    <style>
+        body {
+            background-color: #ffc0cb; /* 粉紅色背景 */
+            font-family: Arial, sans-serif;
+        }
+
+        #collection-image {
+            border: 2px solid blue; /* 藍色框線 */
+            width: 400px;
+            height: 300px;
+            transition: all 1s ease; /* 漸變效果 */
+        }
+
+        #collection-image:hover {
+            width: 450px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">My Collection</h1>
+
+    <!-- Image Display Area -->
+    <div style="text-align: center;">
+        <img id="collection-image" src="2.JPG" alt="Collection Item">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="previousItem()">上一項收藏</button>
+        <button onclick="nextItem()">下一項收藏</button>
+    </div>
+
+    <script>
+        const images = ["2.JPG", "3.JPG", "4.JPG"]; // Define the list of images
+        let currentIndex = 0; // Initial image index
+
+        function updateImage() {
+            const imgElement = document.getElementById("collection-image");
+            imgElement.src = images[currentIndex]; // Update image source based on the current index
+        }
+
+        function previousItem() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Decrease the index and loop around if needed
+            updateImage(); // Update the displayed image
+        }
+
+        function nextItem() {
+            currentIndex = (currentIndex + 1) % images.length; // Increase the index and loop around if needed
+            updateImage(); // Update the displayed image
+        }
+    </script>
+</body>
+</html>
+
